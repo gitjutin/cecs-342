@@ -80,9 +80,10 @@ namespace FileTypeReport {
       // 2. Process data
       var query =
         from file in files
-        // TODO: Fill in your code here.
+        let ext = Path.GetExtension(file).ToLower() // Stores lowercase extension for each file
+        group file by ext into fileGroup            // organize all files into groups 
         select new {
-          Type =      // TODO: Fill in your code here.
+          Type = fileGroup.Key == "" ? "[no extension]" : fileGroup.Key // checks if extension is empty then labels it
           Count =     // TODO: Fill in your code here.
           TotalSize = // TODO: Fill in your code here.
         };
