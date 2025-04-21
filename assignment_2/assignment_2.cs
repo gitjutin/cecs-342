@@ -31,11 +31,12 @@ namespace FileTypeReport {
       // 2. Process data
       var query =
         from file in files
-        // TODO: Fill in your code here.
+        let ext = Path.GetExtension(file).ToLower() // Stores the lowercase extension for each file
+        group file by ext into fileGroup            // organize all files into groups
         select new {
-          Type =      // TODO: Fill in your code here.
-          Count =     // TODO: Fill in your code here.
-          TotalSize = // TODO: Fill in your code here.
+          Type = fileGroup.Key == "" ? "[no extension]" : fileGroup.Key, // Checks if extension is empty & labels it
+          Count = fileGroup.Count(), //count the amount of that file type in the group
+          TotalSize = FormatByteSize(fileGroup.Sum(f => f.Length)) //use formatbytesize to display how much storage the files take up
         };
 
       // 3. Functionally construct XML
