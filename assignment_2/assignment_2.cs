@@ -35,7 +35,7 @@ namespace FileTypeReport {
         group file by ext into fileGroup            // organize all files into groups
         select new {
           Type = fileGroup.Key == "" ? "[no extension]" : fileGroup.Key, // Checks if extension is empty & labels it
-          Count =     // TODO: Fill in your code here.
+          Count =     
           TotalSize = // TODO: Fill in your code here.
         };
 
