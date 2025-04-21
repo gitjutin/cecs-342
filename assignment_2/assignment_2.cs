@@ -83,7 +83,7 @@ namespace FileTypeReport {
         let ext = Path.GetExtension(file).ToLower() // Stores lowercase extension for each file
         group file by ext into fileGroup            // organize all files into groups 
         select new {
-          Type = fileGroup.Key == "" ? "[no extension]" : fileGroup.Key // checks if extension is empty then labels it
+          Type = fileGroup.Key == "" ? "[no extension]" : fileGroup.Key, // checks if extension is empty then labels it
           Count =     // TODO: Fill in your code here.
           TotalSize = // TODO: Fill in your code here.
         };
